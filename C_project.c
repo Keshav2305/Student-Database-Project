@@ -155,44 +155,88 @@ void change(struct student stu[100],int n)
     }
     printf("\nWhich Number do you want to change?\n");
     scanf("%d",&a);
-
+    printf("What would you like to change?\n");
+    printf("Press 1 for Name\n");
+    printf("Press 2 for Roll no. and Marks\n");
+    int changec;
+    scanf("%d",&changec);
+    if(changec==1)
+    {
+    printf("Full Name of Student:\n");
+    scanf("%s%s",&stu[a-1].name,&stu[a-1].surname);
+    printf("Entered Students data.\n");
+    }
+    else if (changec==2)
+    {
+        printf("Roll No. of student:\n");
+        scanf("%d",&stu[a-1].roll_no);
+        for(j=0;j<n;j++)
+        {
+            if(stu[j].roll_no==stu[a-1].roll_no)
+            {
+                printf("Error! Roll no. Already found.\n");
+                strcpy(stu[j].name,"Error!");
+                strcpy(stu[j].surname,"Error!");
+                stu[j].roll_no=0;
+                break;
+            }
+            else
+            {
+                printf("Would you like to change branch?\n");
+                int bchoice;
+                printf("Press 1 for yes and any other number for no\n");
+                scanf("%d",&bchoice);
+                if(bchoice==1)
+                {
+                    printf("Branch and division of Student:\n");
+                    scanf("%s%s",&stu[a-1].branch,&stu[a-1].division);
+                }
+                printf("Which marks would you like to change\n");
+                printf("Press 1 for Maths\nPress 2 for Physics\nPress 3 for CTI\nPress 4 for Programming in C\nPress 5 for CS\nPress any othe number for no change\n");
+                int mchoice;
+                scanf("%d",&mchoice);
+                if(mchoice==1)
+                {
+                    printf("Enter maths marks:\n");
+                    scanf("%f",&stu[a-1].m.maths);
+                }
+                else if(mchoice==2)
+                {
+                    printf("Enter Physics marks:\n");
+                    scanf("%f",&stu[a-1].m.physics); 
+                }
+               else if(mchoice==3)
+                {
+                   printf("Enter CTI marks:\n");
+                   scanf("%f",&stu[a-1].m.cti);
+                }
+                else if(mchoice==4)
+                {
+                    printf("Enter Programming in C marks:\n");
+                    scanf("%f",&stu[a-1].m.pc);
+                }
+                else if(mchoice==5)
+                {
+                    printf("Enter CS marks:\n");
+                    scanf("%f",&stu[a-1].m.cs);
+                }
+                else
+                {
+                    break;
+                }
+            printf("Entered Students data.\n");
+            break;
+            }
+        }
+    }
+}
+    
     
 
 
 
-    printf("Full Name of Student:\n");
-    scanf("%s%s",&stu[a-1].name,&stu[a-1].surname);
-    printf("Roll No. of student:\n");
-    scanf("%d",&stu[a-1].roll_no);
-    for(j=0;j<n;j++)
-    {
-        if(stu[j].roll_no==stu[a-1].roll_no)
-        {
-            printf("Error! Roll no. Already found.\n");
-            strcpy(stu[j].name,"Error!");
-            strcpy(stu[j].surname,"Error!");
-            stu[j].roll_no=0;
-            break;
-        }
-        else
-        {
-            printf("Branch and division of Student:\n");
-            scanf("%s%s",&stu[a-1].branch,&stu[a-1].division);
-            printf("Enter maths marks:\n");
-            scanf("%f",&stu[a-1].m.maths);
-            printf("Enter Physics marks:\n");
-            scanf("%f",&stu[a-1].m.physics);
-            printf("Enter CTI marks:\n");
-            scanf("%f",&stu[a-1].m.cti);
-            printf("Enter Programming in C marks:\n");
-            scanf("%f",&stu[a-1].m.pc);
-            printf("Enter CS marks:\n");
-            scanf("%f",&stu[a-1].m.cs);
-            printf("Entered Students data.\n");
-            break;
-        }
-    }
-}        
+    
+           
 
 //Main code body
 int main()
